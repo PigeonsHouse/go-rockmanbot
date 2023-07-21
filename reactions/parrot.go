@@ -3,8 +3,8 @@ package reactions
 import (
 	"github.com/mattn/go-mastodon"
 	"github.com/sirupsen/logrus"
+	"go-rockmanbot/apps"
 	"go-rockmanbot/interfaces"
-	"go-rockmanbot/utils"
 	"strings"
 )
 
@@ -23,7 +23,7 @@ func (p ParrotReaction) SendReaction(s *mastodon.Status, c interfaces.Client) {
 	newToot = newToot[:strings.Index(newToot, "って言")]
 	newToot = strings.Replace(newToot, "@Rockmanexe", "", -1)
 	newToot = strings.TrimSpace(newToot)
-	logrus.Info(" [author] " + utils.GetName(s.Account))
+	logrus.Info(" [author] " + apps.GetName(s.Account))
 	if len(newToot) > 0 {
 		logrus.Info(" [message] " + newToot)
 	} else {
